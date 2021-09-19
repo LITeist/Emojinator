@@ -30,7 +30,8 @@
             {
                 CGFloat minDistance = 0;
                 UIColor *averageColor = [EmojyHelper averageColorForImage:[EmojyHelper cropImage:image withRect:CGRectMake(i, j, rectSize, rectSize)]];
-                UIImage *imageFromColor = [EmojyHelper imageFromColor:averageColor withRect:CGRectMake(0, 0, rectSize, rectSize)];
+//                UIImage *imageFromColor = [EmojyHelper imageFromColor:averageColor withRect:CGRectMake(0, 0, rectSize, rectSize)];
+				UIImage *imageFromColor = [EmojyHelper imageBrickFromColor:averageColor withRect:CGRectMake(0, 0, rectSize, rectSize)];
                 UIImage *emojiFromColor = [EmojyHelper emodjiForColor:averageColor withRect:CGRectMake(0, 0, rectSize, rectSize) minDistance:minDistance forText:forText];
 				float step = 0.02;//0.07
                 while (!emojiFromColor)
@@ -42,7 +43,8 @@
 				// TODO вот тут можно отменить отрисовку среднего цвета
                 image = [EmojyHelper drawImage:imageFromColor onImage:image inRect:CGRectMake(i, j, rectSize, rectSize)];
                 // Затем поверх нее рисуем иконку
-                image = [EmojyHelper drawImage:emojiFromColor onImage:image inRect:CGRectMake(i, j, rectSize, rectSize)];
+				// TODO не рисуем в рамках эксперимента
+//                image = [EmojyHelper drawImage:emojiFromColor onImage:image inRect:CGRectMake(i, j, rectSize, rectSize)];
             };
         }
     return image;
@@ -55,16 +57,19 @@
     {
         CGFloat minDistance = 0;
         UIColor *averageColor = [EmojyHelper averageColorForImage:[EmojyHelper cropImage:image withRect:rect]];
-        UIImage *imageFromColor = [EmojyHelper imageFromColor:forText ? [UIColor whiteColor] : averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height)];
-        UIImage *emojiFromColor = [EmojyHelper emodjiForColor:averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height) minDistance:minDistance forText:forText];
-		float step = 0.01;
-        while (!emojiFromColor)
-        {
-            emojiFromColor = [EmojyHelper emodjiForColor:averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height) minDistance:minDistance forText:forText];
-			minDistance = minDistance + step;
-        };
+		// TODO тут временно отменяем эмоджинацию и ставим lego-bricks
+//        UIImage *imageFromColor = [EmojyHelper imageFromColor:forText ? [UIColor whiteColor] : averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+		UIImage *imageFromColor = [EmojyHelper imageBrickFromColor:forText ? [UIColor whiteColor] : averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+//        UIImage *emojiFromColor = [EmojyHelper emodjiForColor:averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height) minDistance:minDistance forText:forText];
+//		float step = 0.01;
+//        while (!emojiFromColor)
+//        {
+//            emojiFromColor = [EmojyHelper emodjiForColor:averageColor withRect:CGRectMake(0, 0, rect.size.width, rect.size.height) minDistance:minDistance forText:forText];
+//			minDistance = minDistance + step;
+//        };
 		//
-        returnImage = [EmojyHelper drawImage:emojiFromColor onImage:imageFromColor inRect:CGRectMake(0, 0, rect.size.width,     rect.size.height)];
+//        returnImage = [EmojyHelper drawImage:emojiFromColor onImage:imageFromColor inRect:CGRectMake(0, 0, rect.size.width,     rect.size.height)];
+		returnImage = imageFromColor;
     };
     return returnImage;
 }
@@ -154,6 +159,43 @@
     return nil;
 }
 
++ (UIImage *)imageBrickFromColor:(UIColor *)color withRect:(CGRect)rect
+{
+	UIImage *image = [EmojyHelper imageWithImage:[UIImage imageNamed:@"brick"] scaledToWidth:rect.size.width];
+	CGSize backgroundSize = image.size;
+	UIGraphicsBeginImageContext(rect.size);
+
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
+	CGRect backgroundRect;
+	backgroundRect.size = backgroundSize;
+		backgroundRect.origin.x = 0;
+		backgroundRect.origin.y = 0;
+
+
+	 CGFloat r,g,b,a;
+	 [color getRed:&r green:&g blue:&b alpha:&a];
+	// вместо a ставлю 0.9
+	 CGContextSetRGBFillColor(ctx, r, g, b, 1);
+	 CGContextFillRect(ctx, backgroundRect);
+
+	 CGRect imageRect;
+	 imageRect.size = image.size;
+	 imageRect.origin.x = (backgroundSize.width - image.size.width)/2;
+	 imageRect.origin.y = (backgroundSize.height - image.size.height)/2;
+
+	 // Unflip the image
+	 CGContextTranslateCTM(ctx, 0, backgroundSize.height);
+	 CGContextScaleCTM(ctx, 1.0, -1.0);
+
+	 CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+	 CGContextDrawImage(ctx, imageRect, image.CGImage);
+
+	 UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+	 UIGraphicsEndImageContext();
+
+	 return newImage;
+}
 
 + (UIImage *)imageFromColor:(UIColor *)color withRect:(CGRect)rect
 {

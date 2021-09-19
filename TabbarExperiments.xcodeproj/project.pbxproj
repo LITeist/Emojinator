@@ -934,6 +934,7 @@
 		1F54EA961EDB193B001DB1D6 /* EMJInappPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EA951EDB193B001DB1D6 /* EMJInappPurchaseView.m */; };
 		1F54EA9B1EDD7144001DB1D6 /* EMJInappPurchaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EA9A1EDD7144001DB1D6 /* EMJInappPurchaseScrollView.m */; };
 		1F54EA9E1EDD715C001DB1D6 /* EMJSingleInAppPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EA9D1EDD715C001DB1D6 /* EMJSingleInAppPurchaseView.m */; };
+		1F62AB7726F6A95E0045CD95 /* fireJson.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F62AB7626F6A9420045CD95 /* fireJson.bundle */; };
 		1F880D381EE863DC00AD9B5A /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F880D371EE863DC00AD9B5A /* plus.png */; };
 		1F880D3B1EE94B5000AD9B5A /* EMJChooseDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F880D3A1EE94B5000AD9B5A /* EMJChooseDialog.m */; };
 		1F880D3E1EE94C1B00AD9B5A /* EMJDialogElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F880D3D1EE94C1B00AD9B5A /* EMJDialogElement.m */; };
@@ -1906,6 +1907,7 @@
 		1F54EA9A1EDD7144001DB1D6 /* EMJInappPurchaseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJInappPurchaseScrollView.m; sourceTree = "<group>"; };
 		1F54EA9C1EDD715C001DB1D6 /* EMJSingleInAppPurchaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSingleInAppPurchaseView.h; sourceTree = "<group>"; };
 		1F54EA9D1EDD715C001DB1D6 /* EMJSingleInAppPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSingleInAppPurchaseView.m; sourceTree = "<group>"; };
+		1F62AB7626F6A9420045CD95 /* fireJson.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = fireJson.bundle; sourceTree = "<group>"; };
 		1F880D371EE863DC00AD9B5A /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		1F880D391EE94B5000AD9B5A /* EMJChooseDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJChooseDialog.h; sourceTree = "<group>"; };
 		1F880D3A1EE94B5000AD9B5A /* EMJChooseDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJChooseDialog.m; sourceTree = "<group>"; };
@@ -1923,7 +1925,6 @@
 		1F880D521EEC989E00AD9B5A /* EMJStartHelperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJStartHelperView.m; sourceTree = "<group>"; };
 		1F880D551EED7F3100AD9B5A /* EMJSettingsScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSettingsScreen.h; sourceTree = "<group>"; };
 		1F880D561EED7F3100AD9B5A /* EMJSettingsScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSettingsScreen.m; sourceTree = "<group>"; };
-		1F880D5B1EF0354600AD9B5A /* fireJson.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = fireJson.bundle; path = ../../fireJson.bundle; sourceTree = "<group>"; };
 		1F9EB5D91ED5B97B00FE0671 /* vawes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vawes.jpg; sourceTree = "<group>"; };
 		1F9EB5DB1ED6FB0300FE0671 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -2981,9 +2982,9 @@
 				1F880D4E1EEC831600AD9B5A /* Assets.xcassets */,
 				1F4293331ECC4514007125B5 /* LaunchScreen.storyboard */,
 				1F4293361ECC4514007125B5 /* Info.plist */,
+				1F62AB7626F6A9420045CD95 /* fireJson.bundle */,
 				1F1A54F41F0CC48400E97ACE /* emojiCodes.bundle */,
 				1F1163911F02FF5400F56B35 /* icons.bundle */,
-				1F880D5B1EF0354600AD9B5A /* fireJson.bundle */,
 				1F4293251ECC4514007125B5 /* Supporting Files */,
 			);
 			path = TabbarExperiments;
@@ -3233,6 +3234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F62AB7726F6A95E0045CD95 /* fireJson.bundle in Resources */,
 				1F11691C1F0306A600F56B35 /* 619.png in Resources */,
 				1F11689B1F0306A500F56B35 /* 486.png in Resources */,
 				1F1169201F0306A600F56B35 /* 623.png in Resources */,

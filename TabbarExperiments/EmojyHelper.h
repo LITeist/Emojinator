@@ -32,6 +32,7 @@
 + (CGFloat)optimalRectNumberFromSlider:(CGFloat)sliderValue;
 + (CGFloat)numberOfRectsWithSize:(int)size andOptimalNumber:(CGFloat)numberOfRects;
 + (UIImage *)drawImage:(UIImage *)inputImage onImage:(UIImage *)originImage inRect:(CGRect)frame;
++ (UIImage *)imageBrickFromColor:(UIColor *)color withRect:(CGRect)rect;
 + (UIImage *)imageFromColor:(UIColor *)color withRect:(CGRect)rect;
 + (UIImage *)cropImage:(UIImage *)image withRect:(CGRect)rect;
 + (NSString *)emojiSymbolForColor:(UIColor *)color;
